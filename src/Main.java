@@ -12,10 +12,9 @@ public class Main {
         int remains = diffYear % 4;
         if (year >= 1584 && year % 400 == 0) {
             System.out.println(year + " год является високосным");
-        } else if (year >= 1584 && year % 4 == 0) {
-            System.out.println(year + " год является високосным");
         } else if (year >= 1584 && year % 100 == 0) {
             System.out.println(year + " год не является високосным");
+        } else if (year >= 1584 && year % 4 == 0) {System.out.println(year + " год является високосным");
         } else if (year >= 1584 && remains != 0) {
             System.out.println(year + " год не является високосным");
         } else if (year < 1584) {
@@ -23,7 +22,7 @@ public class Main {
         }
     }
 
-    public static void applicationIdentifierForOS(int operatingSystem, int yearOfRelease) {
+    public static void identificationOfApplicationForOS(int operatingSystem, int yearOfRelease) {
         int currentYear = LocalDate.now().getYear();
         if (yearOfRelease < currentYear && operatingSystem == 1) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
@@ -43,7 +42,7 @@ public class Main {
             System.out.println("Карта будет доставленна вам в течении " +time+ " суток");
         } else if (deliveryDistance > 20 && 60 >= deliveryDistance) {time += 1;
             System.out.println("Карта будет доставленна вам в течении " +time+ " суток");
-        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {time += 2;
+        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {time += 1;
             System.out.println("Карта будет доставленна вам в течении " +time+ " суток");
         } else if (deliveryDistance > 100) {
             System.out.println("Доставка на растояние " +deliveryDistance+ " невыполняется");
@@ -64,7 +63,7 @@ public class Main {
 
         int clientOS = 1;
         int clientDeviceYear = 2025;
-        applicationIdentifierForOS(clientOS, clientDeviceYear);
+        identificationOfApplicationForOS(clientOS, clientDeviceYear);
 
         ++dZ;
         dZ(dZ);
