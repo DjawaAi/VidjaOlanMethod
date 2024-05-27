@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public class Main {
-    public static void dZ (byte dZ1) {
+    public static void assignTaskNumber (byte dZ1) {
         System.out.println();
         System.out.println("Задача № " + dZ1);
         System.out.println();
@@ -24,6 +24,12 @@ public class Main {
 
     public static void identificationOfApplicationForOS(int operatingSystem, int yearOfRelease) {
         int currentYear = LocalDate.now().getYear();
+        if (operatingSystem != 0 && operatingSystem != 1) {
+            System.out.println("Для данной операционной системы приложение отсутствуе");
+        }
+        if (yearOfRelease > LocalDate.now().getYear()) {
+            System.out.println("Значение года выпуска устройства лежит в области грядущего будущего");
+        }
         if (yearOfRelease < currentYear && operatingSystem == 1) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
         } else if (yearOfRelease <currentYear && operatingSystem == 0) {
@@ -42,7 +48,7 @@ public class Main {
             System.out.println("Карта будет доставлена вам в течении " +time+ " суток");
         } else if (deliveryDistance > 20 && 60 >= deliveryDistance) {time += 1;
             System.out.println("Карта будет доставлена вам в течении " +time+ " суток");
-        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {time += 1;
+        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {time += 2;
             System.out.println("Карта будет доставлена вам в течении " +time+ " суток");
         } else if (deliveryDistance > 100) {
             System.out.println("Доставка на растояние " +deliveryDistance+ " невыполняется");
@@ -53,24 +59,20 @@ public class Main {
         System.out.println("Тема ДЗ Метод");
         byte dZ = 0;
         ++dZ;
-        dZ(dZ);
+        assignTaskNumber(dZ);
 
         int year1 = 2024;
         determineLeapYear(year1);
 
         ++dZ;
-        dZ(dZ);
+        assignTaskNumber(dZ);
 
-        int clientOS = 1;
-        int clientDeviceYear = 2023;
-        if ((clientOS != 0 && clientOS != 1) || clientDeviceYear > LocalDate.now().getYear()) {
-            System.out.println("Для данной операционной системы приложение отсутствуе или введён не возможный год выпуска устройства");
-        } else {
-            identificationOfApplicationForOS(clientOS, clientDeviceYear);
-        }
+        int clientOS = 8;
+        int clientDeviceYear = 2025;
+        identificationOfApplicationForOS(clientOS, clientDeviceYear);
 
         ++dZ;
-        dZ(dZ);
+        assignTaskNumber(dZ);
 
         int remoteness = 65;
         deliveryTimeOfCard(remoteness);
