@@ -24,21 +24,27 @@ public class Main {
 
     public static void identificationOfApplicationForOS(int operatingSystem, int yearOfRelease) {
         int currentYear = LocalDate.now().getYear();
-        if (operatingSystem != 0 && operatingSystem != 1) {
+        if (operatingSystem != 0 && operatingSystem != 1 && yearOfRelease > LocalDate.now().getYear()) {
+            System.out.println("Для данной операционной системы приложение отсутствуе");
+            System.out.println("Значение года выпуска устройства лежит в области грядущего будущего");
+        } else if (operatingSystem != 0 && operatingSystem != 1) {
             System.out.println("Для данной операционной системы приложение отсутствуе");
         }
-        if (yearOfRelease > LocalDate.now().getYear()) {
+        else if (yearOfRelease > LocalDate.now().getYear()) {
             System.out.println("Значение года выпуска устройства лежит в области грядущего будущего");
         }
-        if (yearOfRelease < currentYear && operatingSystem == 1) {
-            System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        } else if (yearOfRelease <currentYear && operatingSystem == 0) {
-            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        }
-        if (yearOfRelease == currentYear && operatingSystem == 1) {
-            System.out.println("Установите обычную версию приложения для Android по ссылке");
-        } else if (yearOfRelease == currentYear && operatingSystem == 0) {
-            System.out.println("Установите обычную версию приложения для iOS по ссылке");
+        else if (yearOfRelease < currentYear) {
+            if (operatingSystem == 1) {
+                System.out.println("Установите облегченную версию приложения для Android по ссылке");
+            } else {
+                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+            }
+        } else if (yearOfRelease == currentYear) {
+            if (operatingSystem == 1) {
+                System.out.println("Установите обычную версию приложения для Android по ссылке");
+            } else {
+                System.out.println("Установите обычную версию приложения для iOS по ссылке");
+            }
         }
     }
 
@@ -46,10 +52,10 @@ public class Main {
         int time = 1;
         if (deliveryDistance <= 20) {
             System.out.println("Карта будет доставлена вам в течении " +time+ " суток");
-        } else if (deliveryDistance > 20 && 60 >= deliveryDistance) {time += 1;
-            System.out.println("Карта будет доставлена вам в течении " +time+ " суток");
-        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {time += 2;
-            System.out.println("Карта будет доставлена вам в течении " +time+ " суток");
+        } else if (deliveryDistance > 20 && 60 >= deliveryDistance) {
+            System.out.println("Карта будет доставлена вам в течении " +(++time)+ " суток");
+        } else if (deliveryDistance > 60 && deliveryDistance <= 100) {
+            System.out.println("Карта будет доставлена вам в течении " +(time += 2)+ " суток");
         } else if (deliveryDistance > 100) {
             System.out.println("Доставка на растояние " +deliveryDistance+ " невыполняется");
         }
@@ -67,14 +73,14 @@ public class Main {
         ++dZ;
         assignTaskNumber(dZ);
 
-        int clientOS = 8;
-        int clientDeviceYear = 2025;
+        int clientOS = 1;
+        int clientDeviceYear = 2020;
         identificationOfApplicationForOS(clientOS, clientDeviceYear);
 
         ++dZ;
         assignTaskNumber(dZ);
 
-        int remoteness = 65;
+        int remoteness = 95;
         deliveryTimeOfCard(remoteness);
     }
 }
